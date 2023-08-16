@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="../styles/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="../scripts/app.js" defer></script>
+        <title>The Unconventional Calculator</title>
+    </head>
+
+    <body>
+        <header>The Unconventional Calculator</header>
+        <div class="calculator">
+            <div class="container">
+                <input type="number" class="input-number" id="input-number" />
+                <div class="btn-wrapper">
+                    <button id="btn-add">+</button>
+                    <button id="btn-subtract">-</button>
+                    <button id="btn-multiply">*</button>
+                    <button id="btn-divide">/</button>
+                </div>
+            </div>
+            <div class="container">
+                <p class="current-calculation" id="current-calculation">0</p>
+                <p class="current-result">
+                    Results: <span id="current-result">0</span>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
