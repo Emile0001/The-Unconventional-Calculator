@@ -13,10 +13,14 @@ function outputResult(result, text) {
 }
 const defaultResult = 0;
 let currentResult = defaultResult;
+let currentCalValue = currentResult;
 
 function add() {
-    result = userInput.value + 1;
-    outputResult(result, "");
+    let currentCalValue = currentResult;
+
+    currentResult = parseInt(currentResult) + parseInt(userInput.value);
+
+    outputResult(currentResult, currentCalValue + "+" + userInput.value);
 }
 
 addBtn.addEventListener("click", add);
