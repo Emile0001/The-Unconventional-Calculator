@@ -7,6 +7,8 @@ const currentResultOutput = document.getElementById("current-result");
 const currentCalculationOutput = document.getElementById("current-calculation");
 let currentResult = 0;
 
+let logEntries = [];
+
 /**
  * Updates the result and calculation description in the DOM.
  * @param {number} result - The result of the calculation.
@@ -33,11 +35,21 @@ function getUserInput() {
  * @returns {string} The calculation description.
  */
 function createAndWriteOutput(
-    currentResultValue,
+    initialResultValue,
     operator,
     enteredNumberValue
 ) {
-    return `${currentResultValue} ${operator} ${enteredNumberValue} `;
+    logEntries.push(
+        initialResultValue +
+            " " +
+            operator +
+            " " +
+            enteredNumberValue +
+            " = " +
+            currentResult
+    );
+    console.log(logEntries);
+    return `${initialResultValue} ${operator} ${enteredNumberValue} `;
 }
 
 /**
@@ -45,13 +57,15 @@ function createAndWriteOutput(
  */
 function add() {
     const enteredNumber = getUserInput();
+    let initialResult = currentResult;
+
+    currentResult += enteredNumber;
 
     const calcDescription = createAndWriteOutput(
-        currentResult,
+        initialResult,
         "+",
         enteredNumber
     );
-    currentResult += enteredNumber;
     outputResult(currentResult, calcDescription);
 }
 
@@ -60,13 +74,16 @@ function add() {
  */
 function subtract() {
     const enteredNumber = getUserInput();
+    let initialResult = currentResult;
+
+    currentResult -= enteredNumber;
 
     const calcDescription = createAndWriteOutput(
-        currentResult,
+        initialResult,
         "-",
         enteredNumber
     );
-    currentResult -= enteredNumber;
+
     outputResult(currentResult, calcDescription);
 }
 
@@ -75,13 +92,15 @@ function subtract() {
  */
 function multiply() {
     const enteredNumber = getUserInput();
+    let initialResult = currentResult;
 
+    currentResult *= enteredNumber;
     const calcDescription = createAndWriteOutput(
-        currentResult,
+        initialResult,
         "*",
         enteredNumber
     );
-    currentResult *= enteredNumber;
+
     outputResult(currentResult, calcDescription);
 }
 
@@ -90,13 +109,15 @@ function multiply() {
  */
 function divide() {
     const enteredNumber = getUserInput();
+    let initialResult = currentResult;
 
+    currentResult /= enteredNumber;
     const calcDescription = createAndWriteOutput(
-        currentResult,
+        initialResult,
         "/",
         enteredNumber
     );
-    currentResult /= enteredNumber;
+
     outputResult(currentResult, calcDescription);
 }
 
