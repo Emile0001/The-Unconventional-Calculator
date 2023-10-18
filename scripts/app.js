@@ -3,51 +3,101 @@ const addBtn = document.getElementById("btn-add");
 const subtractBtn = document.getElementById("btn-subtract");
 const multiplyBtn = document.getElementById("btn-multiply");
 const divideBtn = document.getElementById("btn-divide");
-
 const currentResultOutput = document.getElementById("current-result");
 const currentCalculationOutput = document.getElementById("current-calculation");
+let currentResult = 0;
 
+/**
+ * Updates the result and calculation description in the DOM.
+ * @param {number} result - The result of the calculation.
+ * @param {string} text - The calculation description.
+ */
 function outputResult(result, text) {
     currentResultOutput.textContent = result;
     currentCalculationOutput.textContent = text;
 }
-const defaultResult = 0;
-let currentResult = defaultResult;
 
+/**
+ * Parses the user input and returns a number.
+ * @returns {number} The user input as a number.
+ */
 function getUserInput() {
     return parseInt(userInput.value);
 }
 
+/**
+ * Creates a calculation description based on the current result, operator, and entered number.
+ * @param {number} currentResultValue - The current result.
+ * @param {string} operator - The operator used in the calculation.
+ * @param {number} enteredNumberValue - The number entered by the user.
+ * @returns {string} The calculation description.
+ */
+function createAndWriteOutput(
+    currentResultValue,
+    operator,
+    enteredNumberValue
+) {
+    return `${currentResultValue} ${operator} ${enteredNumberValue} `;
+}
+
+/**
+ * Performs addition and updates the result and calculation description.
+ */
 function add() {
     const enteredNumber = getUserInput();
-    const calcDescription = `${currentResult} + ${enteredNumber}`;
-    currentResult = parseInt(currentResult) + enteredNumber;
 
-    return outputResult(currentResult, calcDescription);
+    const calcDescription = createAndWriteOutput(
+        currentResult,
+        "+",
+        enteredNumber
+    );
+    currentResult += enteredNumber;
+    outputResult(currentResult, calcDescription);
 }
 
+/**
+ * Performs subtraction and updates the result and calculation description.
+ */
 function subtract() {
     const enteredNumber = getUserInput();
-    const calcDescription = currentResult + " - " + enteredNumber;
-    currentResult = parseInt(currentResult) - enteredNumber;
-    return outputResult(currentResult, calcDescription);
+
+    const calcDescription = createAndWriteOutput(
+        currentResult,
+        "-",
+        enteredNumber
+    );
+    currentResult -= enteredNumber;
+    outputResult(currentResult, calcDescription);
 }
 
+/**
+ * Performs multiplication and updates the result and calculation description.
+ */
 function multiply() {
     const enteredNumber = getUserInput();
-    const calcDescription = `${currentResult} * ${enteredNumber}`;
 
-    currentResult = parseInt(currentResult) * enteredNumber;
-    return outputResult(currentResult, calcDescription);
+    const calcDescription = createAndWriteOutput(
+        currentResult,
+        "*",
+        enteredNumber
+    );
+    currentResult *= enteredNumber;
+    outputResult(currentResult, calcDescription);
 }
 
+/**
+ * Performs division and updates the result and calculation description.
+ */
 function divide() {
     const enteredNumber = getUserInput();
-    const calcDescription = currentResult + " / " + enteredNumber;
 
-    currentResult = parseInt(currentResult) / enteredNumber;
-
-    return outputResult(currentResult, calcDescription);
+    const calcDescription = createAndWriteOutput(
+        currentResult,
+        "/",
+        enteredNumber
+    );
+    currentResult /= enteredNumber;
+    outputResult(currentResult, calcDescription);
 }
 
 addBtn.addEventListener("click", add);
