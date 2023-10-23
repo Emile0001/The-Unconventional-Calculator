@@ -28,10 +28,11 @@ function getUserInput() {
 }
 
 /**
- * Creates a calculation description based on the current result, operator, and entered number.
+ * Creates a calculation description based on the current result, operator, and entered number then displays the answer.
  * @param {number} currentResultValue - The current result.
  * @param {string} operator - The operator used in the calculation.
  * @param {number} enteredNumberValue - The number entered by the user.
+ * @param {number} currentResult - The answer
  * @returns {string} The calculation description.
  */
 function createAndWriteOutput(
@@ -48,8 +49,23 @@ function createAndWriteOutput(
             " = " +
             currentResult
     );
-    console.log(logEntries);
+    console.log(logEntries); //console log the array
+
     return `${initialResultValue} ${operator} ${enteredNumberValue} `;
+}
+/**
+ * Creates a calculation description based on the current result, operator, and entered number.
+ * @param {number} initialResultValue - The initial result.
+ * @param {string} operator - The operator used in the calculation.
+ * @param {number} enteredNumberValue - The number entered by the user.
+ *
+ */
+function createAndLogObject(initialResultValue, operator, enteredNumberValue) {
+    return console.log({
+        initialResult: initialResultValue,
+        operator: operator,
+        enteredNumberValue: enteredNumberValue,
+    });
 }
 
 /**
@@ -67,6 +83,7 @@ function add() {
         enteredNumber
     );
     outputResult(currentResult, calcDescription);
+    createAndLogObject(initialResult, "+", enteredNumber);
 }
 
 /**
@@ -85,6 +102,7 @@ function subtract() {
     );
 
     outputResult(currentResult, calcDescription);
+    createAndLogObject(initialResult, "-", enteredNumber);
 }
 
 /**
@@ -102,6 +120,7 @@ function multiply() {
     );
 
     outputResult(currentResult, calcDescription);
+    createAndLogObject(initialResult, "*", enteredNumber);
 }
 
 /**
@@ -119,6 +138,7 @@ function divide() {
     );
 
     outputResult(currentResult, calcDescription);
+    createAndLogObject(initialResult, "/", enteredNumber);
 }
 
 addBtn.addEventListener("click", add);
